@@ -1,5 +1,6 @@
 from tkinter import *
 import math
+from PIL import Image, ImageTk
 
 #---------------------------- CONSTANTS -------------------------------
 PINK = "#e2979c"
@@ -85,8 +86,10 @@ window.config(padx=50, pady=50, bg=YELLOW)
 #Canvas object to add color/picture overlapping layers on screen
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 
-#Read logo
-tomato_image = PhotoImage(file="tomato.png")
+#Read and resize logo
+img = Image.open("tomato.png")
+resized_image = img.resize((200, 220), Image.ANTIALIAS)
+tomato_image = ImageTk.PhotoImage(resized_image)
 #Add logo to canvas and setup
 canvas.create_image(100, 112, image=tomato_image)
 
