@@ -16,6 +16,10 @@ timer = None
 
 #---------------------------- TIMER MECHANISM -------------------------
 def start_timer():
+    #Disable start button
+    start_button.config(state="disabled")
+    reset_button.config(state="normal")
+    
     global reps
     reps += 1
 
@@ -39,6 +43,10 @@ def start_timer():
 
 #---------------------------- TIMER RESET -----------------------------
 def reset_timer():
+    #Disable reset button
+    start_button.config(state="normal")
+    reset_button.config(state="disabled")
+    
     window.after_cancel(timer)
     #timer_text reset
     canvas.itemconfig(timer_text, text="00:00")
@@ -107,10 +115,12 @@ check_label = Label(fg=GREEN, bg=YELLOW)
 check_label.grid(column=1, row=3)
 #Buttons
 ##Start
-start_button = Button(text="Start", highlightthickness=0, font=(FONT_NAME, 14, "bold"), command=start_timer)
+start_button = Button(text="Start", highlightthickness=0, font=(FONT_NAME, 14, "bold"), command=start_timer,
+                      state="normal")
 start_button.grid(column=0, row=2)
 ##Reset
-reset_button = Button(text="Reset", highlightthickness=0, font=(FONT_NAME, 14, "bold"), command=reset_timer)
+reset_button = Button(text="Reset", highlightthickness=0, font=(FONT_NAME, 14, "bold"), command=reset_timer,
+                     state="disabled")
 reset_button.grid(column=2, row=2)
 
 window.mainloop()
