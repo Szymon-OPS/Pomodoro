@@ -17,6 +17,11 @@ window.config(padx=50, pady=50, bg=YELLOW)
 #Canvas object to add color/picture overlapping layers on screen
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 
+#Read logo
+tomato_image = PhotoImage(file="tomato.png")
+#Add logo to canvas and setup
+canvas.create_image(100, 112, image=tomato_image)
+
 #Add text and change it on canvas
 timer_text = canvas.create_text(103, 134, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
 
