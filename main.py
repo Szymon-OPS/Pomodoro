@@ -33,7 +33,7 @@ def start_timer():
     #Color changes depending on rep number
     if reps % 8 == 0:
         count_down(long_break_sec)
-        timer_label.config(text="Break", fg=RED)
+        timer_label.config(text="Long Break", fg=RED)
     elif reps % 2 == 0:
         count_down(short_break_sec)
         timer_label.config(text="Break", fg=PINK)
@@ -82,7 +82,13 @@ def count_down(count):
         global timer
         timer = window.after(1000, count_down, count - 1)
     else:
+        #Added alarm sound
+        window.bell()
+        #Raise window if was minimized by user
+        window.lift()
+        #Bring window to front
         raise_above_all(window)
+        
         start_timer()
         marks = ""
         work_sessions = math.floor(reps/2)
