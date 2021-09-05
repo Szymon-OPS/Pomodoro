@@ -58,6 +58,11 @@ def reset_timer():
     global reps
     reps = 0
 
+#---------------------------- WINDOW RAISE ABOVE ALL ------------------
+def raise_above_all(window):
+    window.attributes("-topmost", 1)
+    window.attributes("-topmost", 0)
+
 #---------------------------- COUNTDOWN MECHANISM ---------------------
 def count_down(count):
     #Return the largest whole number with math.floor()
@@ -77,6 +82,7 @@ def count_down(count):
         global timer
         timer = window.after(1000, count_down, count - 1)
     else:
+        raise_above_all(window)
         start_timer()
         marks = ""
         work_sessions = math.floor(reps/2)
